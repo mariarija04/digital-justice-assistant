@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advocate Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Existing styles */
+        body {
+        background: url('tealbg.jpg') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: column;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 70%;
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #dashboard-heading {
+        font-size: 36px;
+        color: #007070;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .title-underline {
+        border: 3px solid #007070;
+        width: 80%;
+        margin: 0 auto 20px 0;
+    }
+
+    label {
+        color: #333;
+        font-weight: bold;
+        margin-right: 10px;
+        font-size: 20px;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    button {
+        background-color: #008080;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #007070;
+    }
+        /* Add styles for the "New Case" button */
+        .new-case-button {
+            background-color: #008080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .new-case-button:hover {
+            background-color: #007070;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="dashboard-heading">Advocate Dashboard</h1>
+        <hr class="title-underline">
+
+        <label for="name">Case title:</label>
+        <input type="text" id="name" placeholder="Your Name">
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Your Email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Your Password">
+
+        <label for="Case_title">Tit</label>
+        <input type="password" id="password" placeholder="Your Password">
+
+
+        <label for="Cstatus"> New Case Status:</label>
+        <input type="Cstatus" id="Cstatus" placeholder="Your Case Status">
+
+        <!-- Add the "New Case" button with an onclick event to redirect to updated_profile.html -->
+        <button class="new-case-button" onclick="redirectToUpdatedProfile()">Submit</button>
+    </div>
+
+    <script>
+        function updateProfile() {
+            // Add your profile update logic here
+
+            // After profile update, redirect to updated_profile.html
+            window.location.href = "updated_profile.html";
+        }
+
+        function redirectToUpdatedProfile() {
+            window.location.href = "updated_profile.html";
+        }
+    </script>
+</body>
+</html>

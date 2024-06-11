@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Indian Legal News Updates</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ticker-container {
+            background-color: #0097b2;
+            color: #fff;
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        .ticker-content {
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        header {
+            background-color: #0097b2;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 36px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #0097b2;
+        }
+
+        .swiper-container {
+            width: 100%;
+        }
+
+        .swiper-slide {
+            display: flex;
+            background-color: #0097b2;
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            margin: 20px 0;
+            height: 200px; /* Set a fixed height for all Swiper slides */
+        }
+
+        .news-image-container {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .news-title {
+            padding: 15px;
+            flex: 2;
+        }
+
+        .news-title a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .swiper-button-prev, .swiper-button-next {
+            font-size: 24px;
+            color: #0097b2;
+        }
+
+        .recent-updates {
+            margin-top: 40px;
+        }
+
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .news-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .news-item .news-details {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="ticker-container">
+        <div class="ticker-content">
+            <p>Breaking News: Centre defends electoral bonds, says 'more contribution to the ruling party is the norm' - <a href="news1.html"> Read more </a> • Right to free speech does not confer the right to tarnish someone's reputation: Calcutta High Court - <a href="news2.html"> Read more </a>  •  Wife demanding to live separately from husband not always cruelty: Calcutta High Court - <a href="news3.html">Read more</a></p>
+        </div>
+    </div>
+    <header>
+        <h1>Indian Legal News Updates</h1>
+    </header>
+    <div class="container">
+        <a class="home-link" href="main-page.html">Go to Home Page</a>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="news-image-container">
+                        <img class="news-image" src="news/s1.avif" alt="News 1 Image">
+                    </div>
+                    <div class="news-title">
+                        <a href="news/news1.html">Centre defends electoral bonds, says 'more contribution to the ruling party is norm</a>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide">
+                    <div class="news-image-container">
+                        <img class="news-image" src="news/Recent Updates4381.png" alt="News 2 Image">
+                    </div>
+                    <div class="news-title">
+                        <a href="news/news2.html">'Why no health advisories to citizens?' Bombay High Court on dangerous AQI levels</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-image-container">
+                        <img class="news-image" src="news/Recent Updates8057.png" alt="News 3 Image">
+                    </div>
+                    <div class="news-title">
+                        <a href="news/news3.html">Wife demanding to live separately from husband not always cruelty: Calcutta High Court</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+        
+        <!-- Recent Updates Section -->
+        <section class="recent-updates">
+            <h2>Recent Updates</h2>
+            <ul class="news-list">
+                <li class="news-item">
+                    <img src="news/Recent Updates111.png" alt="News 4 Image">
+                    <div class="news-details">
+                        <h3><a href="news/new4.html">Firecracker restrictions: NGT calls for strict compliance; says celebrations can't be at the cost of health
+                        </a></h3>
+                        <p>Posted on October 20, 2023</p>
+                        <p>The National Green Tribunal (NGT) at Bhopal recently called for strict compliance with the directions of the Supreme Court as well as the principal bench of the tribunal with respect to the regulation and restrictions on the use of firecrackers</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <img src="news/new5.avif" alt="News 5 Image">
+                    <div class="news-details">
+                        <h3><a href="news/news5.html">'Why no health advisories to citizens?' Bombay High Court on dangerous AQI levels</a></h3>
+                        <p>Posted on October 20, 2023</p>
+                        <p>The court pointed to media reports saying the air quality in Mumbai had been "unhealthy" for several days, with the city ranking 7th among the most polluted cities globally.</p>
+                    </div>
+                </li>
+                <li class="news-item">
+                    <img src="news/news6.avif" alt="News 6 Image">
+                    <div class="news-details">
+                        <h3><a href="news/news6.html">Can transgender person who underwent surgery complain under Domestic Violence Act?</a></h3>
+                        <p>Posted on November 2, 2023</p>
+                        <p>A special leave petition has been filed by a man who is challenging the Bombay High Court's order that transgenders, post-sex reassignment surgery, can be considered "aggrieved persons" under the Domestic Violence Act.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            centeredSlides: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</body>
+</html>

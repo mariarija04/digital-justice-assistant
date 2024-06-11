@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .container {
+            width: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .box {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        label {
+            width: 100px;
+            font-weight: bold;
+            color: #008080;
+        }
+
+        span {
+            width: 200px;
+            color: #008080;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        input[type="checkbox"]:checked + label {
+            font-weight: bold;
+        }
+
+        .schedule-button {
+            background-color: #0097B2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .schedule-button:hover {
+            background-color: #7ED957;
+        }
+    </style>
+</head>
+<body background="../tealbg.jpg">
+    <h1>User Details</h1>
+    <div class="container">
+        <div class="box">
+            <label for="name">Name:</label>
+            <span id="name">John Doe</span>
+        </div>
+        <div class="box">
+            <label for="place">Place:</label>
+            <span id="place">Cityville</span>
+        </div>
+        <div class="box">
+            <label for="availability">Available Offline:</label>
+            <div class="checkbox">
+                <input type="checkbox" id="availableToggle">
+                <label for="availableToggle">Available</label>
+            </div>
+        </div>
+        <div class="box">
+            <button class="schedule-button" id="ScheduleMeetingButton" onclick="redirectToMeetingPage()">Schedule Meeting</button>
+        </div>
+    </div>
+
+    <script>
+        function redirectToMeetingPage() {
+            window.location.href = "schedule_meeting.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Case Histories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #0097B2; /* Blue title color */
+        }
+
+        .pdf-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pdf-card {
+            background-color: #fff;
+            border: 1px solid #0097B2; /* Blue border around each card */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            cursor: pointer;
+            position: relative; /* Added for positioning the ::before element */
+        }
+
+        .pdf-card::before {
+            content: "♜"; /* Chess piece as a vintage illustration */
+            font-size: 24px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .pdf-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pdf-card a {
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            color: #0097B2; /* Blue link color */
+            transition: color 0.3s; /* Color change on hover */
+        }
+
+        .pdf-card a:hover {
+            color: #7ED957; /* Green link color on hover */
+        }
+
+        #searchInput {
+            margin: 10px 0;
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        #searchInput:focus {
+            outline: none;
+            border-color: #0097B2;
+        }
+        
+        #searchButton {
+            padding: 10px;
+            background-color: #0097B2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        #searchButton:hover {
+            background-color: #7ED957;
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            position: absolute;
+            top: 20px; /* Adjust the top position as needed */
+            left: 20px; /* Adjust the left position as needed */
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #7ED957;
+        }
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+        }
+
+        .menu-container a {
+            color: #555;
+            text-decoration: none;
+            margin-right: 50px;
+            transition: color 0.3s ease;
+        }
+
+        .menu-container a:hover {
+            color: #007bff;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .modal-body {
+            padding: 10px 0;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        .filter-container {
+            margin-top: 20px;
+        }
+
+        .filter-button {
+            padding: 10px 20px;
+            background-color: #0097B2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .filter-button:hover {
+            background-color: #7ED957;
+        }
+
+        .filter-button.active {
+            background-color: #7ED957;
+        }
+
+        @media screen and (max-width: 768px) {
+            #searchInput {
+                width: 100%;
+            }
+
+            .home-button {
+                position: static;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <a href="h.html"><i class="fas fa-home"></i> Home</a>
+    </div>
+    <div class="container">
+        <h1>Legal Case Histories</h1>
+        <input type="text" id="searchInput" placeholder="Search for a case...">
+        <button id="searchButton"><i class="fas fa-search"></i> Search</button>
+
+        <div class="filter-container">
+            <button class="filter-button active" data-category="all">All Cases</button>
+            <button class="filter-button" data-category="criminal">Criminal Cases</button>
+            <button class="filter-button" data-category="family">Family Cases</button>
+            <button class="filter-button" data-category="civil">Civil Cases</button>
+        </div>
+
+        <div class="pdf-container">
+            <!-- PDF cards will be dynamically generated here -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>Case Details</h2>
+            </div>
+            <div class="modal-body">
+                <p id="caseDetails"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="closeModal" class="filter-button">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Define a mapping of case titles to their respective PDF filenames and categories
+        const pdfFileMapping = {
+    "Land Dispute Resolution": { file: "pdfs/-0___jonew__judis__123.pdf", category: "civil" },
+    "Criminal Sentencing Guidelines": { file: "pdfs/-0___jonew__judis__126.pdf", category: "criminal" },
+    "Family Law Mediation": { file: "pdfs/-0___jonew__judis__10166.pdf", category: "family" },
+    "Tax Evasion Prosecution": { file: "pdfs/-0___jonew__judis__10187.pdf", category: "criminal" },
+    "Corporate Fraud Litigation": { file: "pdfs/-0___jonew__judis__10193.pdf", category: "civil" },
+    "Environmental Impact Assessment": { file: "pdfs/-0___jonew__judis__10290.pdf", category: "civil" },
+    "Child Custody Disputes": { file: "pdfs/-0___jonew__judis__10304.pdf", category: "family" },
+    "Workplace Discrimination Cases": { file: "pdfs/-0___jonew__judis__10322.pdf", category: "civil" },
+    "Intellectual Property Rights": { file: "pdfs/-0___jonew__judis__10347.pdf", category: "civil" },
+    "Personal Injury Compensation": { file: "pdfs/-0___jonew__judis__10356.pdf", category: "civil" },
+    "Contract Breach Claims": { file: "pdfs/-0___jonew__judis__10391.pdf", category: "civil" },
+    "Real Estate Title Disputes": { file: "pdfs/-0___jonew__judis__10426.pdf", category: "civil" },
+    "Employment Termination Laws": { file: "pdfs/-0___jonew__judis__10439.pdf", category: "civil" },
+    "Civil Rights Violations": { file: "pdfs/-0___jonew__judis__10442.pdf", category: "civil" },
+    "Medical Malpractice Cases": { file: "pdfs/-0___jonew__judis__10502.pdf", category: "civil" },
+    "Immigration Visa Denials": { file: "pdfs/-0___jonew__judis__10519.pdf", category: "civil" },
+    "Insider Trading Allegations": { file: "pdfs/-0___jonew__judis__10520.pdf", category: "civil" },
+    "Paternity Test Results": { file: "pdfs/-0___jonew__judis__10548.pdf", category: "family" },
+    "Divorce Settlement Agreements": { file: "pdfs/-0___jonew__judis__10166.pdf", category: "family" },
+    "Product Liability Lawsuits": { file: "pdfs/-0___jonew__judis__10187.pdf", category: "civil" },
+    "Inheritance Dispute Resolutions": { file: "pdfs/-0___jonew__judis__10193.pdf", category: "civil" },
+    "Antitrust Violations": { file: "pdfs/-0___jonew__judis__10290.pdf", category: "civil" },
+    "Defamation Lawsuits": { file: "pdfs/-0___jonew__judis__10304.pdf", category: "civil" },
+    "Copyright Infringement Actions": { file: "pdfs/-0___jonew__judis__10322.pdf", category: "civil" },
+    "Zoning Regulation Challenges": { file: "pdfs/-0___jonew__judis__10347.pdf", category: "civil" },
+    "Police Misconduct Allegations": { file: "pdfs/-0___jonew__judis__10356.pdf", category: "civil" },
+    "Bankruptcy Filing Process": { file: "pdfs/-0___jonew__judis__10391.pdf", category: "civil" },
+    "Adoption Approval Hearings": { file: "pdfs/-0___jonew__judis__10426.pdf", category: "family" },
+    "Insurance Claim Disputes": { file: "pdfs/-0___jonew__judis__10439.pdf", category: "civil" },
+    "Custodial Parent Relocation": { file: "pdfs/-0___jonew__judis__10442.pdf", category: "family" },
+    "Workers' Compensation Claims": { file: "pdfs/-0___jonew__judis__10502.pdf", category: "civil" },
+    "Alimony Modification Petitions": { file: "pdfs/-0___jonew__judis__10519.pdf", category: "family" },
+    "Housing Code Violations": { file: "pdfs/-0___jonew__judis__10520.pdf", category: "civil" },
+    "Domestic Violence Restraining": { file: "pdfs/-0___jonew__judis__10548.pdf", category: "criminal" },
+    "Eminent Domain Proceedings": { file: "pdfs/-0___jonew__judis__10557.pdf", category: "civil" },
+    "Child Support Orders": { file: "pdfs/-0___jonew__judis__10562.pdf", category: "family" },
+    "Whistleblower Protections": { file: "pdfs/-0___jonew__judis__10613.pdf", category: "civil" },
+    "Tax Fraud Investigations": { file: "pdfs/-0___jonew__judis__10629.pdf", category: "criminal" },
+    "Employment Discrimination": { file: "pdfs/-0___jonew__judis__10637.pdf", category: "civil" },
+    "Marriage Annulment Cases": { file: "pdfs/-0___jonew__judis__10649.pdf", category: "family" },
+    "Class Action Lawsuits": { file: "pdfs/-0___jonew__judis__10663.pdf", category: "civil" },
+    "Juvenile Delinquency Hearings": { file: "pdfs/-0___jonew__judis__10668.pdf", category: "criminal" },
+    "Securities Fraud Trials": { file: "pdfs/-0___jonew__judis__10679.pdf", category: "civil" },
+    "Privacy Invasion Suits": { file: "pdfs/-0___jonew__judis__10693.pdf", category: "civil" },
+    "Property Boundary Disputes": { file: "pdfs/-0___jonew__judis__10752.pdf", category: "civil" },
+    "Medical Ethics Issues": { file: "pdfs/-0___jonew__judis__10762.pdf", category: "civil" },
+    "Immigration Asylum Claims": { file: "pdfs/-0___jonew__judis__10773.pdf", category: "civil" },
+    "Non-Compete Agreement": { file: "pdfs/-0___jonew__judis__10796.pdf", category: "civil" },
+    "Public Nuisance Lawsuits": { file: "pdfs/-0___jonew__judis__10804.pdf", category: "civil" },
+    "Adoption Finalizations": { file: "pdfs/-0___jonew__judis__10805.pdf", category: "family" },
+    "Landlord-Tenant Disputes": { file: "pdfs/-0___jonew__judis__10814.pdf", category: "civil" },
+    "Nursing Home Neglect": { file: "pdfs/-0___jonew__judis__10818.pdf", category: "civil" },
+    "Elder Abuse Allegations": { file: "pdfs/-0___jonew__judis__10823.pdf", category: "criminal" },
+    "Child Abuse Investigations": { file: "pdfs/-0___jonew__judis__10823.pdf", category: "criminal" },
+    "Business Partnership Dissolutions": { file: "pdfs/-0___jonew__judis__10844.pdf", category: "civil" },
+    "Criminal Insanity Defenses": { file: "pdfs/-0___jonew__judis__10857.pdf", category: "criminal" },
+    "Workplace Safety Violations": { file: "pdfs/-0___jonew__judis__10877.pdf", category: "civil" },
+    "Defective Product Recalls": { file: "pdfs/-0___jonew__judis__10886.pdf", category: "civil" },
+    "Marriage License Issuance": { file: "pdfs/-0___jonew__judis__10892.pdf", category: "family" },
+    "Expert Witness Testimonies": { file: "pdfs/-0___jonew__judis__10897.pdf", category: "civil" }
+};
+
+
+        // Function to update the displayed case titles based on user input and category filter
+        function updateCaseTitles() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const category = document.querySelector('.filter-button.active').dataset.category;
+            const pdfContainer = document.querySelector(".pdf-container");
+
+            pdfContainer.innerHTML = ''; // Clear the previous content
+
+            for (const title in pdfFileMapping) {
+                const { file, category: caseCategory } = pdfFileMapping[title];
+                if ((title.toLowerCase().includes(searchInput) || searchInput === '') && (category === 'all' || category === caseCategory)) {
+                    const pdfCard = document.createElement('div');
+                    pdfCard.className = 'pdf-card';
+                    const link = document.createElement('a');
+                    link.href = file;
+                    link.textContent = title;
+                    pdfCard.appendChild(link);
+                    pdfContainer.appendChild(pdfCard);
+                }
+            }
+        }
+
+        // Initial display of case titles
+        updateCaseTitles();
+
+        // Add event listeners for the search button and input field to update results dynamically
+        document.getElementById("searchButton").addEventListener("click", updateCaseTitles);
+        document.getElementById("searchInput").addEventListener("input", updateCaseTitles);
+
+        // Add event listener for category filter buttons
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                updateCaseTitles();
+            });
+        });
+
+        // Modal
+        const modal = document.getElementById("myModal");
+        const closeModalBtn = document.getElementById("closeModal");
+
+        // When the user clicks on <span> (x), close the modal
+        closeModalBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Event listener for displaying case details modal
+        document.querySelector(".pdf-container").addEventListener("click", function(e) {
+            if (e.target && e.target.nodeName === "A") {
+                e.preventDefault();
+                const caseTitle = e.target.textContent;
+                const caseDetails = `You clicked on: ${caseTitle}`;
+                document.getElementById("caseDetails").innerText = caseDetails;
+                modal.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

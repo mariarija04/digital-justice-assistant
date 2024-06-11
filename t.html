@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translate Page</title>
+    <style>
+        .google_te_banner_frame {
+            display: none !important;
+        }
+    </style>
+</head>
+<body background="tealbg.jpg">
+    <h1>Welcome to My Website</h1>
+    <p>This is some example text that you can translate.</p>
+    
+    <div id="google_translate_element"></div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+</body>
+</html>

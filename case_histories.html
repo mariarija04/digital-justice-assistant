@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Case Histories</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background: url('tealbg.jpg') no-repeat;
+            background-size: cover;
+            background-attachment: fixed; 
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #0097B2; /* Blue title color */
+        }
+
+        .pdf-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pdf-card {
+            background-color: #fff;
+            border: 1px solid #0097B2; /* Blue border around each card */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            cursor: pointer;
+            position: relative; /* Added for positioning the ::before element */
+        }
+
+        .pdf-card::before {
+            content: "♜"; /* Chess piece as a vintage illustration */
+            font-size: 24px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .pdf-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pdf-card a {
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            color: #0097B2; /* Blue link color */
+            transition: color 0.3s; /* Color change on hover */
+        }
+
+        .pdf-card a:hover {
+            color: #7ED957; /* Green link color on hover */
+        }
+
+        #searchInput {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        
+        #searchButton {
+            padding: 10px;
+        }
+        .home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    position: absolute;
+    top: 70px; /* Adjust the top position as needed */
+    left: 50px; /* Adjust the left position as needed */
+}
+
+.home-button:hover {
+    background-color: #7ED957;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="h.html" class="home-button">Home</a>
+        <h1>Legal Case Histories</h1>
+        <input type="text" id="searchInput" placeholder="Search for a case...">
+        <button id="searchButton" style="background-color: #0097B2; color: white; outline: none;">Search</button>
+
+
+        <div class="pdf-container">
+            <!-- PDF cards will be dynamically generated here -->
+        </div>
+    </div>
+
+    <script>
+        // Get a reference to the search button
+const searchButton = document.getElementById("searchButton");
+
+// Add an event listener to change the background color on hover
+searchButton.addEventListener("mouseover", function () {
+    searchButton.style.backgroundColor = "#7ED957"; // Change to green on hover
+});
+
+// Add an event listener to reset the background color when the mouse leaves
+searchButton.addEventListener("mouseout", function () {
+    searchButton.style.backgroundColor = "#0097B2"; // Change back to the initial color
+});
+        const pdfFileMapping = {
+    "Land Dispute Resolution": "pdfs/-0___jonew__judis__123.pdf",
+    "Criminal Sentencing Guidelines": "pdfs/-0___jonew__judis__126.pdf",
+    "Family Law Mediation": "pdfs/-0___jonew__judis__10166.pdf",
+    "Tax Evasion Prosecution": "pdfs/-0___jonew__judis__10187.pdf",
+    "Corporate Fraud Litigation": "pdfs/-0___jonew__judis__10193.pdf",
+    "Environmental Impact Assessment": "pdfs/-0___jonew__judis__10290.pdf",
+    "Child Custody Disputes": "pdfs/-0___jonew__judis__10304.pdf",
+    "Workplace Discrimination Cases": "pdfs/-0___jonew__judis__10322.pdf",
+    "Intellectual Property Rights": "pdfs/-0___jonew__judis__10347.pdf",
+    "Personal Injury Compensation": "pdfs/-0___jonew__judis__10356.pdf",
+    "Contract Breach Claims": "pdfs/-0___jonew__judis__10391.pdf",
+    "Real Estate Title Disputes": "pdfs/-0___jonew__judis__10426.pdf",
+    "Employment Termination Laws": "pdfs/-0___jonew__judis__10439.pdf",
+    "Civil Rights Violations": "pdfs/-0___jonew__judis__10442.pdf",
+    "Medical Malpractice Cases": "pdfs/-0___jonew__judis__10502.pdf",
+    "Immigration Visa Denials": "pdfs/-0___jonew__judis__10519.pdf",
+    "Insider Trading Allegations": "pdfs/-0___jonew__judis__10520.pdf",
+    "Paternity Test Results": "pdfs/-0___jonew__judis__10548.pdf",
+    "Divorce Settlement Agreements": "pdfs/-0___jonew__judis__10166.pdf",
+    "Product Liability Lawsuits": "pdfs/-0___jonew__judis__10187.pdf",
+    "Inheritance Dispute Resolutions": "pdfs/-0___jonew__judis__10193.pdf",
+    "Antitrust Violations": "pdfs/-0___jonew__judis__10290.pdf",
+    "Defamation Lawsuits": "pdfs/-0___jonew__judis__10304.pdf",
+    "Copyright Infringement Actions": "pdfs/-0___jonew__judis__10322.pdf",
+    "Zoning Regulation Challenges": "pdfs/-0___jonew__judis__10347.pdf",
+    "Police Misconduct Allegations": "pdfs/-0___jonew__judis__10356.pdf",
+    "Bankruptcy Filing Process": "pdfs/-0___jonew__judis__10391.pdf",
+    "Adoption Approval Hearings": "pdfs/-0___jonew__judis__10426.pdf",
+    "Insurance Claim Disputes": "pdfs/-0___jonew__judis__10439.pdf",
+    "Custodial Parent Relocation": "pdfs/-0___jonew__judis__10442.pdf",
+    "Workers' Compensation Claims": "pdfs/-0___jonew__judis__10502.pdf",
+    "Alimony Modification Petitions": "pdfs/-0___jonew__judis__10519.pdf",
+    "Housing Code Violations": "pdfs/-0___jonew__judis__10520.pdf",
+    "Domestic Violence Restraining": "pdfs/-0___jonew__judis__10548.pdf",
+    "Eminent Domain Proceedings": "pdfs/-0___jonew__judis__10557.pdf",
+    "Child Support Orders": "pdfs/-0___jonew__judis__10562.pdf",
+    "Whistleblower Protections": "pdfs/-0___jonew__judis__10613.pdf",
+    "Tax Fraud Investigations": "pdfs/-0___jonew__judis__10629.pdf",
+    "Employment Discrimination": "pdfs/-0___jonew__judis__10637.pdf",
+    "Marriage Annulment Cases": "pdfs/-0___jonew__judis__10649.pdf",
+    "Class Action Lawsuits": "pdfs/-0___jonew__judis__10663.pdf",
+    "Juvenile Delinquency Hearings": "pdfs/-0___jonew__judis__10668.pdf",
+    "Securities Fraud Trials": "pdfs/-0___jonew__judis__10679.pdf",
+    "Privacy Invasion Suits": "pdfs/-0___jonew__judis__10693.pdf",
+    "Property Boundary Disputes": "pdfs/-0___jonew__judis__10752.pdf",
+    "Medical Ethics Issues": "pdfs/-0___jonew__judis__10762.pdf",
+    "Immigration Asylum Claims": "pdfs/-0___jonew__judis__10773.pdf",
+    "Non-Compete Agreement": "pdfs/-0___jonew__judis__10796.pdf",
+    "Public Nuisance Lawsuits": "pdfs/-0___jonew__judis__10804.pdf",
+    "Adoption Finalizations": "pdfs/-0___jonew__judis__10805.pdf",
+    "Landlord-Tenant Disputes": "pdfs/-0___jonew__judis__10814.pdf",
+    "Nursing Home Neglect": "pdfs/-0___jonew__judis__10818.pdf",
+    "Elder Abuse Allegations": "pdfs/-0___jonew__judis__10823.pdf",
+    "Child Abuse Investigations": "pdfs/-0___jonew__judis__10823.pdf",
+    "Business Partnership Dissolutions": "pdfs/-0___jonew__judis__10844.pdf",
+    "Criminal Insanity Defenses": "pdfs/-0___jonew__judis__10857.pdf",
+    "Workplace Safety Violations": "pdfs/-0___jonew__judis__10877.pdf",
+    "Defective Product Recalls": "pdfs/-0___jonew__judis__10886.pdf",
+    "Marriage License Issuance": "pdfs/-0___jonew__judis__10892.pdf",
+    "Expert Witness Testimonies": "pdfs/-0___jonew__judis__10897.pdf"
+};
+
+
+        // Function to update the displayed case titles based on user input
+        function updateCaseTitles() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const pdfContainer = document.querySelector(".pdf-container");
+
+            pdfContainer.innerHTML = ''; // Clear the previous content
+
+            for (const title in pdfFileMapping) {
+                if (title.toLowerCase().includes(searchInput)) {
+                    const pdfCard = document.createElement('div');
+                    pdfCard.className = 'pdf-card';
+                    const link = document.createElement('a');
+                    link.href = pdfFileMapping[title];
+                    link.textContent = title;
+                    pdfCard.appendChild(link);
+                    pdfContainer.appendChild(pdfCard);
+                }
+            }
+        }
+
+        // Initial display of case titles
+        updateCaseTitles();
+
+        // Add an event listener for the search button
+        document.getElementById("searchButton").addEventListener("click", updateCaseTitles);
+
+        // Add an event listener for the input field to update results dynamically
+        document.getElementById("searchInput").addEventListener("input", updateCaseTitles);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Assistance</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; 
+        }
+        iframe {
+            width: 400px;
+            height: 600px;
+            border: none; 
+        }
+    </style>
+</head>
+<body background="tealbg.jpg">
+
+    <script type="module">
+        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+        Chatbot.init({
+            chatflowid: "61957f37-bbe0-40b3-b169-bae2dc2b3153",
+            apiHost: "http://localhost:3000",
+        })
+    </script>
+
+</body>
+</html>

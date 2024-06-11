@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Main Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <style>
+    /* Your existing styles here */
+    
+    /* Style for the login modal */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      position: relative; /* Added position relative to the body */
+    }
+    .slider-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .slide {
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9); 
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      border-radius: 10px;
+      transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+      margin: 10px;
+    }
+    .slide:hover {
+      background-color: rgba(52, 152, 219, 0.4);
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+    }
+    .slide:focus {
+      background-color: rgba(255, 255, 254, 0.9);
+    }
+    a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    .slide h2 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+    .slide p {
+      font-size: 14px;
+    }
+    
+    /* Style for the "Explore" buttons */
+    .slide a, .slide button {
+      display: inline-block;
+      padding: 8px 20px;
+      background-color: #0097B2; /* Change to your desired background color */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .slide a:hover, .slide button:hover {
+      background-color: #007185; /* Change to your desired hover color */
+    }
+    
+    .notification-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body style="background-image: url('tealbg.jpg'); background-size: cover;">
+  <div class="navbar">
+    <div class="notification-icon">
+      <a href="notifications.html">
+        <img src="notification1.png" alt="Notification Icon" style="width: 40px; height: 40px;">
+      </a>
+    </div>
+  </div>
+
+  <div class="slider-container">
+    <div class="slide" tabindex="0">
+      <h2>Know Your Rights</h2>
+      <p>Learn about your legal rights and responsibilities as a citizen.</p>
+      <a href="india-political-map.htm">Explore</a>
+    </div>
+    <div class="slide" tabindex="0">
+      <h2>Digital Assistance</h2>
+      <p>Discover digital tools and resources to assist you in various aspects of life.</p>
+      <button onclick="openDigitalAssistance()">Explore</button>
+    </div>
+    <div class="slide" tabindex="0">
+      <h2>Recent Updates</h2>
+      <p>Stay informed about the latest news and developments in your community.</p>
+      <a href="ru.html">Explore</a>
+    </div>
+    <div class ="slide" tabindex="0">
+      <h2>Case Consultation</h2>
+      <p>Get professional advice and guidance for your legal or personal matters.</p>
+      <button onclick="openCaseConsultation()">Explore</button>
+    </div>
+    <div class="slide" tabindex="0">
+      <h2>Case Histories</h2>
+      <p>Explore real-life case studies and learn from the experiences of others.</p>
+      <a href="case_histories.html">Explore</a>
+    </div>
+    <div class="slide" tabindex="0">
+      <h2>Legal Templates</h2>
+      <p>Legal document templates available for you to make filing easier.</p>
+      <a href="ld.html">Explore</a>
+    </div>
+  </div>
+
+  <!-- Your existing code -->
+  <script>
+    function openDigitalAssistance() {
+      // Redirect directly to the Digital Assistance page
+      window.location.href = 'digital_assistance.html';
+    }
+  
+    function openCaseConsultation() {
+      // Redirect directly to the Case Consultation page
+      window.location.href = 'case_consultation.html';
+    }
+  
+  </script>
+  
+
+</body>
+</html>

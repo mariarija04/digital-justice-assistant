@@ -1,0 +1,39 @@
+<form action="/signup" method="post" id="signupForm">
+    <div class="user-type">
+        <input type="radio" name="userType" value="advocate" id="advocateRadio" class="user-type-radio" required>
+        <label for="advocateRadio">Advocate</label>
+        <input type="radio" name="userType" value="general" id="generalRadio" class="user-type-radio" required>
+        <label for="generalRadio">General User</label>
+    </div>
+    <div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFypwxmb7U&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFypwxmb7U&#x2F;view?utm_content=DAFypwxmb7U&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Purple and Blue Modern Blog Page Website UI Desktop Prototype</a> by Athithyan S
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <div id="advocateFields" class="advocate-fields" style="display: none;">
+        <input type="text" name="registrationNumber" placeholder="Advocate Registration Number" required>
+    </div>
+    <button type="submit" id="signupButton">Sign Up</button>
+    <button onclick="goToMainPage()">Skip for now</button>
+</form>
+
+<script type="text/javascript">
+    // Add event listener to user type radio buttons
+    const advocateRadio = document.getElementById("advocateRadio");
+    const advocateFields = document.getElementById("advocateFields");
+
+    advocateRadio.addEventListener("change", function () {
+        if (advocateRadio.checked) {
+            advocateFields.style.display = "block";
+        } else {
+            advocateFields.style.display = "none";
+        }
+    });
+</script>

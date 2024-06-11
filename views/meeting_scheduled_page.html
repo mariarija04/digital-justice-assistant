@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meeting Scheduled</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #008080;
+            font-size: 30px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            color: #008080;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            width: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #008080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body background="../tealbg.jpg">
+    <div class="container">
+        <h1>Meeting Scheduled</h1>
+        <div class="message-box">
+            <p>The meeting has been scheduled.</p>
+            <p>You will be notified with further details.</p>
+        </div>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

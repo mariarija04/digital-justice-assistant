@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        .google_te_banner_frame {
+            display: none !important;
+        }
+    </style>
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+<body background="../tealbg.jpg">
+    <div class="header">
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                    { pageLanguage: 'en' },
+                    'google_translate_element'
+                );
+                var bannerFrame = document.querySelector(".goog-te-banner-frame");
+                if (bannerFrame) {
+                    bannerFrame.style.display = "none";
+                }
+            }
+        </script>
+    </div>
+    <div class="container">
+        <div class="signup">
+            <h2>Sign Up</h2>
+            <style>
+                .google_te_banner_frame {
+                    display: none !important;
+                }
+            </style>
+            <div id="google_translate_element"></div>
+            <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <script>
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+                }
+            </script>
+<form action="/signup" method="post" id="signupForm">
+    <div class="user-type">
+        <input type="radio" name="userType" value="advocate" id="advocateRadio" class="user-type-radio" required>
+        <label for="advocateRadio">Advocate</label>
+        <input type="radio" name="userType" value="general" id="generalRadio" class="user-type-radio" required>
+        <label for="generalRadio">General User</label>
+    </div>
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <div id="advocateFields" class="advocate-fields" style="display: none;">
+        <input type="text" name="registrationNumber" placeholder="Advocate Registration Number" required>
+    </div>
+    <button type="submit" id="signupButton">Sign Up</button>
+    <button onclick="goToMainPage()">Skip for now</button>
+</form>
+
+<script type="text/javascript">
+    // Add event listener to user type radio buttons
+    const advocateRadio = document.getElementById("advocateRadio");
+    const advocateFields = document.getElementById("advocateFields");
+
+    advocateRadio.addEventListener("change", function () {
+        if (advocateRadio.checked) {
+            advocateFields.style.display = "block";
+        } else {
+            advocateFields.style.display = "none";
+        }
+    });
+</script>
+
+        </div>
+        <div id="successMessage" class="success-message" style="display: none;"></div>
+    </div>
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function goToMainPage() {
+            window.location.href = 'main-page.html';
+        }
+    </script>
+</body>
+</html>

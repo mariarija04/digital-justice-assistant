@@ -1,0 +1,76 @@
+.signup {
+    background-color: white; /* Form background color */
+    border-radius: 10px; /* Rounded corners for the form */
+    padding: 60px; /* Padding around the form */
+    width: 600px; /* Set the form width */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a raised effect */
+    text-align: center;
+}
+
+/* Styling for the input fields and buttons */
+input[type="tel"],
+input[type="email"],
+input[type="text"],
+input[type="password"],
+button[type="submit"],
+input[type="radio"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    background-color: #0097B2; /* Button background color */
+    color: white; /* Button text color */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transition for a hover effect */
+    font-size: 18px; /* Larger font size */
+}
+
+button[type="submit"]:hover {
+    background-color: #7ED957; /* Background color on hover */
+}
+
+/* Styling for the user type radio buttons */
+.user-type input[type="radio"] {
+    margin-right: 5px;
+    font-size: 16px; /* Larger font size for radio buttons */
+}
+
+.login {
+    background-color: white; /* Form background color */
+    border-radius: 10px; /* Rounded corners for the form */
+    padding: 70px; /* Padding around the form */
+    width: 500px; /* Set the form width */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a raised effect */
+    text-align: center;
+}
+
+/* Styling for the success message */
+.success-message {
+    background-color: #0097B2; /* Background color for the success message */
+    color: white; /* Text color for the success message */
+    padding: 10px; /* Padding for the success message container */
+    border-radius: 5px; /* Rounded corners for the container */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login, .signup {
+    margin: 20px; /* Add margin around the form elements */
+}
+
+/* Styling for the user type radio buttons */
+.user-type .user-type-radio {
+    display: inline-block;
+    margin-right: 15px; /* Add some space between the radio buttons */
+    font-size: 16px; /* Larger font size for radio buttons */
+}

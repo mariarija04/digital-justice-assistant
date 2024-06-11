@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive India Map</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #india-map {
+            position: relative;
+        }
+        .state-link {
+            position: absolute;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+        .state-link:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="india-map">
+        <img src="indi.webp" alt="India Map" width="800" height="600">
+
+        <!-- Andhra Pradesh -->
+        <a class="state-link" href="andhra-pradesh-details.html" style="left: 100px; color: #333; top: 150px; width: 100px; height: 100px;"></a>
+
+        <!-- Arunachal Pradesh -->
+        <a class="state-link" href="arunachal-pradesh-details.html" style="left: 200px; top: 100px; width: 100px; height: 100px;"></a>
+        
+        <!-- Add state links for all other states -->
+    </div>
+</body>
+</html>

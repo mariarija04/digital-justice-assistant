@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advocate Search</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Your existing styles here */
+        <style>
+        body {
+        
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        /* Style for the "Request" button */
+.request-button {
+    background-color: #0097B2; /* Set the initial button color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.request-button:hover {
+    background-color: #7ED957; /* Change the button color on hover */
+}
+
+        .container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 80px;
+        text-align: column;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 70%;
+        max-width: 700px;
+        height: 60%; /* Adjust the height here */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #advocate-search-heading {
+    font-size: 36px; /* Increase font size for a heading look */
+    color: #007070; /* Set the desired text color */
+    margin-bottom: 10px; /* Reduce spacing after the heading */
+    text-align: center; /* Center-align the heading */
+}
+
+/* Style for the horizontal line */
+        /* Style for the horizontal line with more space below it */
+    .title-underline {
+        border: 3px solid #007070; /* Add a thicker border as an underline */
+        width: 80%; /* Set the desired width of the underline */
+        margin: 0 auto 50px 0; /* Center the underline and add more space below it */
+        margin-right: 10px;
+    }
+
+
+        label {
+            color: #333;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #008080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #007070;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            color: #333;
+            font-size: 16px;
+        }
+       
+
+        #advocateList {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        #advocateList h2 {
+            font-size: 20px;
+            margin: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .advocate-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .advocate-category {
+        color: black; /* Set default text color to black for category */
+    }
+        /* Custom style for advocate names */
+        .advocate-name {
+            color: #0097B2;
+            font-size: 18px;
+            margin: 0;
+            transition: color 0.3s;
+        }
+
+        /* Hover effect for advocate names */
+        .advocate-card:hover .advocate-name {
+            color: #7ED957;
+        }
+
+        /* Quotes */
+        .quote-container {
+            background-color: #7ED957;
+            color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 18px;
+        }
+
+        .quote {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body background="tealbg.jpg">
+    <div class="container">
+        <h1 id="advocate-search-heading">Advocate Search</h1>
+        <hr class="title-underline">
+        <!-- Filters for Name and Case Category -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter advocate name">
+
+        <label for="caseCategory">Case Category:</label>
+        <select id="caseCategory">
+            <option value="all">All Categories</option>
+        </select>
+
+        <button onclick="searchAdvocates()">Search Advocates</button>
+
+        <!-- List of Dummy Advocates -->
+        <div id="advocateList"></div>
+    </div>
+
+    <div class="quote-container">
+        <p class="quote">"Justice is the constant and perpetual will to render to every man his due." - Justinian I</p>
+    </div>
+
+    <script>
+        // Dummy advocate data with experience property
+        const advocates = [
+            { name: "Advocate 1", category: "0101", experience: 5 },
+            { name: "Advocate 2", category: "0102", experience: 8 },
+            { name: "Advocate 3", category: "0101", experience: 3 },
+            { name: "Advocate 4", category: "0201", experience: 10 },
+        ];
+        
+        // Map of category codes to category names
+        const categoryMap = {
+            "0101": "Labour Matters - Dismissal",
+            "0102": "Labour Matters - Retrenchment",
+            "0103": "Labour Matters - Contract Labour",
+            "0104": "Labour Matters - Matters relating to wages, bonus, ad-hoc, casual daily wages & their regularisation",
+            "0105": "Labour Matters - Matters relating to Workmen Compensation Act",
+            "0106": "Labour Matters - ESI",
+            "0107": "Labour Matters - Factory Act",
+            "0201": "Rent Act Matters",
+            "0301": "Direct Taxes Matters",
+            "0401": "Indirect Taxes Matters",
+            // Add more categories here
+        };
+
+        // Nested object structure to represent categories and subcategories
+        const categoryOptions = {
+            "0101": "Labour Matters - Dismissal",
+            "0102": "Labour Matters - Retrenchment",
+            "0103": "Labour Matters - Contract Labour",
+            "0104": "Labour Matters - Matters relating to wages, bonus, ad-hoc, casual daily wages & their regularisation",
+            "0105": "Labour Matters - Matters relating to Workmen Compensation Act",
+            "0106": "Labour Matters - ESI",
+            "0107": "Labour Matters - Factory Act",
+            "0201": "Rent Act Matters",
+            "0202": "Rent Act Matters - Eviction matters of personal necessity",
+            "0203": "Rent Act Matters - Eviction matters for re-building, and material alteration",
+            "0204": "Rent Act Matters - Eviction matters of sub-letting",
+            "0205": "Rent Act Matters - Eviction matters of disclaimer of title",
+            "0206": "Rent Act Matters - Arrears of rent",
+            "0207": "Rent Act Matters - Others",
+            "0208": "Rent Act Matters - Eviction on the ground of misuse",
+            "0209": "Rent Act Matters - Enhancement of rent",
+            "0210": "Rent Act Matters - Eviction on the ground of non-payment of rent",
+            "0301": "Direct Taxes Matters",
+            "0302": "Direct Taxes Matters - Income Tax Reference under Section 257",
+            "0303": "Direct Taxes Matters - Appeals under Section 261 of Income Tax Act upon a certificate granted by the High Court",
+            "0304": "Direct Taxes Matters - Other matters under Income Tax act, 1961",
+            "0305": "Direct Taxes Matters - Cases relating to Excess Profit Tax Act 1940",
+            "0306": "Direct Taxes Matters - Business profit tax Act, 1947",
+            "0307": "Direct Taxes Matters - Agricultural Income Tax",
+            "0308": "Direct Taxes Matters - Reference under Section 27(3)(a) of the Wealth Tax Act, 1957",
+            "0309": "Direct Taxes Matters - Gift Tax Act 1958",
+            "0310": "Direct Taxes Matters - Property Tax",
+            "0311": "Direct Taxes Matters - Valuation",
+            "0312": "Direct Taxes Matters - Capital Gains",
+            "0313": "Direct Taxes Matters - SLPs relating to Wealth Tax",
+            "0314": "Direct Taxes Matters - Income from salaries",
+            "0315": "Direct Taxes Matters - Income from House Property",
+            "0316": "Direct Taxes Matters - Income from Business/Profession",
+            "0317": "Direct Taxes Matters - Income from other sources",
+            "0318": "Direct Taxes Matters - Deductions/exemptions",
+            "0319": "Direct Taxes Matters - Penalties/Prosecution/Settlement Commission",
+            "0320": "Direct Taxes Matters - Re-assessment/Revisional Power/Rectification",
+            "0321": "Direct Taxes Matters - CBDT circular",
+            "0322": "Direct Taxes Matters - Registration",
+            "0323": "Direct Taxes Matters - Others",
+            "0324": "Direct Taxes Matters - Matters relating to recovery of Direct Tax due",
+            "0401": "Indirect Taxes Matters",
+            "0402": "Indirect Taxes Matters - Interpretation of the Customs Act, Rules & Regulations",
+            "0403": "Indirect Taxes Matters - Interpretation of exemption notification under Customs Act",
+            "0404": "Indirect Taxes Matters - Interpretation of other notification under Customs Act",
+            "0405": "Indirect Taxes Matters - Valuation of Goods under the Customs Act",
+            "0406": "Indirect Taxes Matters - Sales Tax Act (Central & various States)",
+            "0407": "Indirect Taxes Matters - Cess Acts (Rubber, Coffee, Tea, Sugar, etc.)",
+            "0408": "Indirect Taxes Matters - Entry Taxes",
+            "0409": "Indirect Taxes Matters - Motor Vehicles Taxation",
+            "0410": "Indirect Taxes Matters - Purchase Tax",
+            "0411": "Indirect Taxes Matters - Licence Fee",
+            "0412": "Indirect Taxes Matters - Classification under the Indian Tariff Act, 1934 & Customs Tariff Act, 1975",
+            "0413": "Indirect Taxes Matters - Reference under Section 82C of the Gold Control Act",
+            "0414": "Indirect Taxes Matters - Hotel Receipts Tax Act",
+            "0415": "Indirect Taxes Matters - Entertainment Tax",
+            "0416": "Indirect Taxes Matters - Terminal Tax",
+            "0417": "Indirect Taxes Matters - Octroi",
+            "0418": "Indirect Taxes Matters - Valuation",
+            "0419": "Indirect Taxes Matters - Toll Tax",
+            "0420": "Indirect Taxes Matters - Interpretation of the Central Excise Act & the rules",
+            "0421": "Indirect Taxes Matters - Interpretation of exemption notifications under Central Excise Act",
+            "0422": "Indirect Taxes Matters - Interpretation of other notifications under Central Excise Act",
+            "0423": "Indirect Taxes Matters - Valuation of goods under the Central Excise Act",
+            "0424": "Indirect Taxes Matters - Tariff classification under the Central Excise Act, 1944 and Central Excise Tariff Act, 1985",
+            "0425": "Indirect Taxes Matters - Import/Export Control Act, 1947",
+            "0426": "Indirect Taxes Matters - Import Control Order",
+            "0427": "Indirect Taxes Matters - Open General License",
+            "0428": "Indirect Taxes Matters - Import/Export Policy",
+            "0429": "Indirect Taxes Matters - Others",
+            "0430": "Indirect Taxes Matters - Professional Tax",
+            "0431": "Indirect Taxes Matters - Water & Sewage Tax",
+            "0432": "Indirect Taxes Matters - Service Tax",
+            "0433": "Indirect Taxes Matters - Appeals u/s 130 E of Customs Act, 1962",
+            "0434": "Indirect Taxes Matters - Appeals u/s 35 L of Central Excise and Salt Act, 1944.",
+            "0435": "Indirect Taxes Matters - Anti Dumping Duty",
+            "0436": "Indirect Taxes Matters - Value Added Tax",
+            "0437": "Indirect Taxes Matters - Matters relating to recovery of Indirect Tax due",
+            // Add more categories here
+        };
+        // Map of category codes to category names
+        // Your existing category map
+
+        // Nested object structure to represent categories and subcategories
+        // Your existing categoryOptions
+
+        function populateCategoryOptions() {
+        const caseCategoryDropdown = document.getElementById("caseCategory");
+        caseCategoryDropdown.innerHTML = ""; // Clear the existing options
+
+        // Add the "All Categories" option
+        const allCategoriesOption = document.createElement("option");
+        allCategoriesOption.value = "all";
+        allCategoriesOption.textContent = "All Categories";
+        caseCategoryDropdown.appendChild(allCategoriesOption);
+
+        for (const categoryCode in categoryOptions) {
+            if (categoryOptions.hasOwnProperty(categoryCode)) {
+                const categoryName = categoryOptions[categoryCode];
+                const option = document.createElement("option");
+                option.value = categoryCode;
+                option.textContent = categoryName;
+                caseCategoryDropdown.appendChild(option);
+            }
+        }
+    }
+
+        function searchAdvocates() {
+            // Filter advocates based on name and category, and sort by experience in descending order
+            const name = document.getElementById("name").value;
+            const category = document.getElementById("caseCategory").value;
+
+            const filteredAdvocates = advocates
+                .filter((advocate) => {
+                    return (category === "all" || advocate.category === category) &&
+                        (name === "" || advocate.name.toLowerCase().includes(name.toLowerCase()));
+                })
+                .sort((a, b) => b.experience - a.experience); // Sort by experience in descending order
+
+            displayAdvocates(filteredAdvocates);
+        }
+
+        function displayAdvocates(advocates) {
+            const advocateList = document.getElementById("advocateList");
+            advocateList.innerHTML = "";
+
+            if (advocates.length === 0) {
+                advocateList.innerHTML = '<p style="color: black; font-size: 17px; text-align: center;">No advocates found. Try broadening your search.</p>';
+            } else {
+                const h2 = document.createElement("h2");
+                h2.textContent = "Advocates:";
+                advocateList.appendChild(h2);
+
+                advocates.forEach((advocate) => {
+                    const div = document.createElement("div");
+                    const nameElement = document.createElement("p");
+                    nameElement.className = "advocate-name";
+                    nameElement.textContent = advocate.name;
+                    div.appendChild(nameElement);
+
+                    // Add the category with a class for custom styling
+                    const category = categoryMap[advocate.category];
+                    if (category) {
+                        const categoryElement = document.createElement("p");
+                        categoryElement.className = "advocate-category"; // Add a class for category text
+                        categoryElement.textContent = `Category: ${category}`;
+                        div.appendChild(categoryElement);
+                    }
+
+                    // Add the "Experience" with a class for custom styling
+                    const experienceElement = document.createElement("p");
+                    experienceElement.textContent = `Experience: ${advocate.experience} years`;
+                    div.appendChild(experienceElement);
+
+                    // Add a class to the div for styling
+                    div.className = "advocate-card";
+
+                    // Add the "Request" button
+                    const requestButton = document.createElement("button");
+                    requestButton.textContent = "Request";
+                    requestButton.className = "request-button";
+                    div.appendChild(requestButton);
+
+                    // Add an event listener to handle the button click and redirect to the "case_consultation" page
+                    requestButton.addEventListener("click", () => {
+                        window.location.href = "case_description.html"; // Change the URL to your actual page
+                    });
+
+                    advocateList.appendChild(div);
+                });
+            }
+        }
+
+        // Initialize the category options
+        populateCategoryOptions();
+    </script>
+</body>
+</html>

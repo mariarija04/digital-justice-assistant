@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Legal Hub - Home</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+    background-color: #005580;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 250px; /* Add padding to the left side */
+}
+
+
+.logo {
+    flex: 1;
+    text-align: right; 
+    margin-right: 10px; 
+}
+
+.title {
+    flex: 2; 
+    text-align: left;
+}
+
+.title h1 {
+    margin: 0;
+}
+
+
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .ticker-container {
+            background-color: #0097b2;
+            color: #fff;
+            padding: 1px 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .ticker-content {
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px; /* Add padding to create space */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section {
+    padding: 20px;
+    margin-bottom: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.about-text {
+    flex: 1;
+    margin-right: 20px;
+    padding-left: 45px; /* Add padding on the left side */
+}
+.about-text p span {
+    font-size: 20px; /* Increase text size */
+}
+
+
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+        .about-section h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #0097b2;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .explore-services-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #0097b2;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .explore-services-btn:hover {
+            background-color: #007088;
+        }
+
+        .modules {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .module {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items (including icon) horizontally */
+    justify-content: flex-start; /* Align items (including icon) vertically at the top */
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+footer {
+    background-color: #0097b2; /* Darker shade of blue */
+    color: #fff; /* Text color set to white */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo img {
+    max-width: 100px;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-links ul li a {
+    color: #fff; /* Text color set to white */
+    text-decoration: none;
+}
+
+.footer-social ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links ul li a {
+    color: #333; /* Change text color to a darker shade of gray */
+    text-decoration: none;
+}
+
+.footer-social ul li a {
+    color: #333; /* Change text color to a darker shade of gray */
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .module img {
+    width: 60px;
+    height: auto;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 0 transparent); /* Initially no glow */
+    transition: filter 0.3s; /* Smooth transition for the filter property */
+}
+
+.module:hover img {
+    filter: drop-shadow(0 0 10px #0097b2); /* Add a glowing effect with a blue color on hover */
+}
+
+
+.module-info {
+    padding: 20px;
+    text-align: center; /* Center align the content */
+}
+
+.module-info a {
+    display: inline-block; /* Display the links in a row */
+    margin: 10px 5px; /* Add margin to separate the links */
+    padding: 10px 20px;
+    font-size: 1em;
+    text-decoration: none;
+    color: #fff;
+    background-color: #0097b2;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.module-info a:hover {
+    background-color: #007088;
+}
+
+
+        .module h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #0097b2;
+        }
+
+        .module p {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .read-more-link {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            text-decoration: none;
+            color: #fff;
+            background-color: #0097b2;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .read-more-link:hover {
+            background-color: #007088;
+        }
+
+        .recent-updates {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .swiper-container {
+    width: 200%; /* Adjust the width to accommodate for the margins */
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+        .swiper-slide {
+            display: flex;
+            background-color: #0097b2;
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            margin: 20px 10px;
+            height: 150px;
+        }
+
+        .news-image-container {
+            flex: 1;
+            max-width: 120px;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .news-title {
+            padding: 15px;
+            flex: 2;
+        }
+
+        .news-title a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .swiper-pagination {
+    position: relative;
+    bottom: 10px;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    opacity: 0.5;
+    margin: 0 5px;
+    border-radius: 50%;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #0097b2;
+    opacity: 1;
+}
+
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            font-size: 18px;
+            color: #0097b2;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="law-enforcement.png" alt="Your Legal Hub Logo" style="max-width: 100px;">
+            </div>
+            <div class="title">
+                <h1>Your Legal Hub</h1>
+            </div>
+        </div>
+    </header>
+    
+    <div class="ticker-container">
+        <div class="ticker-content">
+            <p>
+                Breaking News: Centre defends electoral bonds, says 'more contribution to the ruling party is the norm' -
+                <a href="news1.html" style="color: #FFFFFF;">Read more</a>
+                • Right to free speech does not confer the right to tarnish someone's reputation: Calcutta High Court -
+                <a href="news2.html" style="color: #FFFFFF;">Read more</a>
+                • Wife demanding to live separately from husband not always cruelty: Calcutta High Court -
+                <a href="news3.html" style="color: #FFFFFF;">Read more</a>
+            </p>
+        </div>
+    </div>
+    <div class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Welcome to Your Legal Hub</h2>
+                    <p>Your one-stop destination for all your legal needs! Whether you're an individual seeking to understand your rights, a business owner in need of legal assistance, or anyone navigating the complexities of the legal system, we're here to help.</p>
+                    <p>Our goal is to make legal services accessible, convenient, and understandable for everyone.</p>
+                    <p>Join us on this journey towards legal empowerment, where knowledge meets opportunity.</p>
+                    <a href="#our-services" class="explore-services-btn">Signup</a> <!-- Button to scroll to the Our Services section -->
+                </div>
+                <div class="about-image">
+                    <img src="info.jpg" alt="Image Description">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</div>
+    <section class="recent-updates">
+        <h2>Our Services & Resources</h2>
+    </section>
+    <div class="container">
+        <div class="modules">
+            <div class="module">
+                <img src="kyr.png" alt="Rights Icon">
+                <div class="module-info">
+                    <h2>Know Your Rights</h2>
+                    <p>Understand your legal rights as an individual. Knowledge is power!</p>
+                    <a href="#" class="read-more-link">Read More</a>
+                </div>
+            </div>
+            <div class="module">
+                <img src="chatbot.png" alt="Digital Icon">
+                <div class="module-info">
+                    <h2>Digital Assistance</h2>
+                    <p>Explore digital tools for legal support and assistance. Get instant legal support.</p>
+                    <a href="#" class="read-more-link">Discover Tools</a>
+                </div>
+            </div>
+            <div class="module">
+                <img src="consulting.png" alt="Consultation Icon">
+                <div class="module-info">
+                    <h2>Case Consultation</h2>
+                    <p>Get expert advice for your legal cases and concerns. Consult with experienced professionals.</p>
+                    <a href="#" class="read-more-link">Get Consultation</a>
+                </div>
+            </div>
+            <div class="module">
+                <img src="letter.png" alt="History Icon">
+                <div class="module-info">
+                    <h2>Case Histories</h2>
+                    <p>Explore real-world legal case studies and outcomes. Learn from past experiences.</p>
+                    <a href="#" class="read-more-link">Explore Cases</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="recent-updates">
+        <div class="container">
+            <h2>Recent Updates</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="news-image-container">
+                            <img class="news-image" src="news/s1.avif" alt="News 1 Image">
+                        </div>
+                        <div class="news-title">
+                            <a href="news/news1.html">Centre defends electoral bonds, says 'more contribution to the ruling party is norm</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="news-image-container">
+                            <img class="news-image" src="news/Recent Updates4381.png" alt="News 2 Image">
+                        </div>
+                        <div class="news-title">
+                            <a href="news/news2.html">'Why no health advisories to citizens?' Bombay High Court on dangerous AQI levels</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="news-image-container">
+                            <img class="news-image" src="news/Recent Updates8057.png" alt="News 3 Image">
+                        </div>
+                        <div class="news-title">
+                            <a href="news/news3.html">Wife demanding to live separately from husband not always cruelty: Calcutta High Court</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="news-image-container">
+                            <img class="news-image" src="news/Recent Updates111.png" alt="News 4 Image">
+                        </div>
+                        <div class="news-title">
+                            <a href="news/new4.html">Firecracker restrictions: NGT calls for strict compliance; says celebrations can't be at the cost of health</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="news-image-container">
+                            <img class="news-image" src="news/new5.avif" alt="News 5 Image">
+                        </div>
+                        <div class="news-title">
+                            <a href="news/news5.html">'Why no health advisories to citizens?' Bombay High Court on dangerous AQI levels</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="news-image-container">
+                            <img class="news-image" src="news/news6.avif" alt="News 6 Image">
+                        </div>
+                        <div class="news-title">
+                            <a href="news/news6.html">Can transgender person who underwent surgery complain under Domestic Violence Act?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="about-section">
+            <h2>Legal Templates</h2>
+            <p>Explore a wide range of legal templates to help you with various legal documents and agreements.</p>
+            <a href="legal_templates.html" class="read-more-link">Explore Templates</a> <!-- Button to redirect to legal templates page -->
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            centeredSlides: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+<footer style="background-color: #0097b2; color: #fff; padding: 20px 0; text-align: center; font-size: 14px;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+        <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="footer-logo" style="flex: 1;">
+                <img src="law-enforcement.png" alt="Logo" style="max-width: 100px;">
+            </div>
+            <div class="footer-links" style="flex: 2;">
+                <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <li style="display: inline-block; margin-right: 20px;"><a href="#" style="color: #000; text-decoration: none;">Home</a></li>
+                    <li style="display: inline-block; margin-right: 20px;"><a href="#" style="color: #000; text-decoration: none;">About</a></li>
+                    <li style="display: inline-block; margin-right: 20px;"><a href="#" style="color: #000; text-decoration: none;">Services</a></li>
+                    <li style="display: inline-block;"><a href="#" style="color: #000; text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social" style="flex: 1;">
+                <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <li style="display: inline-block; margin-right: 10px;"><a href="#" style="color: #000; text-decoration: none;"><i class="fab fa-facebook"></i></a></li>
+                    <li style="display: inline-block; margin-right: 10px;"><a href="#" style="color: #000; text-decoration: none;"><i class="fab fa-twitter"></i></a></li>
+                    <li style="display: inline-block; margin-right: 10px;"><a href="#" style="color: #000; text-decoration: none;"><i class="fab fa-instagram"></i></a></li>
+                    <li style="display: inline-block;"><a href="#" style="color: #000; text-decoration: none;"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <p style="margin-top: 10px;">&copy; 2024 Your Legal Hub. All rights reserved.</p>
+</footer>
